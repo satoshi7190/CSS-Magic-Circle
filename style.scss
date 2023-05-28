@@ -1,0 +1,505 @@
+@font-face {
+    // https://github.com/MichinariNukazawa/RuneAssignMN_Series_Fonts
+    font-family: 'RuneAMN Series Fonts';
+    src: url('./fonts/RuneAssignMN_SansHumanicLike_1.20140809235940.woff') format('woff');
+}
+.base {
+    display: grid;
+}
+
+#toggle1:checked ~ .base {
+    display: none !important;
+}
+
+#toggle2:checked ~ .base {
+    display: none !important;
+}
+#toggle1,
+#toggle2 {
+    height: 20px;
+    z-index: 10 !important;
+}
+
+$color: #fff;
+$bgcolor: rgb(29, 29, 29);
+$glowcolor: #913513;
+
+@mixin size($value) {
+    width: $value;
+    height: $value;
+}
+
+@mixin center {
+    position: absolute;
+    margin: auto;
+    inset: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $bgcolor;
+    overflow: hidden;
+    height: 100vh;
+    font-family: 'RuneAMN Series Fonts';
+    perspective: 2000px;
+    perspective-origin: center;
+    display: grid;
+    place-items: center;
+}
+
+.base {
+    scale: 0.5;
+    @include size(1000px);
+    display: grid;
+    place-items: center;
+    filter: drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 20px $glowcolor);
+    transform: rotate3d(1, 0, 0, 65deg);
+    transition: 1s;
+    &:hover {
+        transform: rotate3d(1, 0, 0, 0deg);
+    }
+    &:active {
+        rotate: 360deg;
+        scale: 1;
+    }
+    animation: flashing 3s linear infinite alternate, s 3s;
+    @keyframes flashing {
+        100% {
+            filter: drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 20px $glowcolor) drop-shadow(0px 0px 20px $color);
+        }
+    }
+    @keyframes s {
+        0% {
+            // scale: 2;
+        }
+    }
+}
+
+.circle {
+    &-1 {
+        animation: text-1in 1s 1.2s backwards;
+        position: absolute;
+        @include size(316px);
+        border: 3px solid $color {
+            radius: 50%;
+        }
+        box-sizing: border-box;
+        &::before {
+            content: '';
+            @include center;
+            @include size(100%);
+            scale: 3.7;
+            border: 2px solid $color {
+                radius: 50%;
+            }
+            box-sizing: border-box;
+        }
+        &::after {
+            content: '';
+            @include center;
+            @include size(100%);
+            scale: 4.6;
+            border: 2px solid $color {
+                radius: 50%;
+            }
+            box-sizing: border-box;
+        }
+    }
+
+    &-2 {
+        position: absolute;
+        @include size(1490px);
+        border: 20px solid $color {
+            radius: 50%;
+        }
+        box-sizing: border-box;
+        filter: blur(10px);
+        animation: circle-1in 1s 2.5s backwards;
+        @keyframes circle-1in {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+
+    &-3 {
+        position: absolute;
+        @include size(1540px);
+        opacity: 0.1;
+        border: 20px solid $color {
+            radius: 50%;
+        }
+        box-sizing: border-box;
+        filter: blur(10px);
+        animation: circle-3in 1s 2.5s backwards;
+        @keyframes circle-3in {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.1;
+            }
+        }
+    }
+}
+
+.line {
+    &-1 {
+        position: absolute;
+        @include size(620px);
+        animation: rotationL 10s linear infinite;
+
+        p {
+            @include center;
+            width: 86.5%;
+            height: 50%;
+            border-bottom: 50px solid $color;
+            $lines: 3;
+            $angle: calc(360deg / $lines);
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i * 1}) {
+                    rotate: $angle * $i + -30deg;
+                    animation: draw 1s;
+                    @keyframes draw {
+                        0% {
+                            clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+                        }
+                        100% {
+                            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-2 {
+        position: absolute;
+        @include size(730px);
+        animation: rotationL 10s linear infinite;
+
+        p {
+            @include center;
+            width: 86.5%;
+            height: 50%;
+            border-bottom: 9px solid $color;
+            $lines: 3;
+            $angle: calc(360deg / $lines);
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i * 1}) {
+                    rotate: $angle * $i + -30deg;
+                    animation: draw 1s 0.6s backwards;
+                }
+            }
+            @keyframes draw {
+                0% {
+                    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+                }
+                100% {
+                    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                }
+            }
+        }
+    }
+    &-3 {
+        position: absolute;
+        @include size(300px);
+        animation: rotationR 10s linear infinite;
+        p {
+            @include center;
+            width: 90%;
+            height: 50%;
+            border: 1px solid $color;
+            transform-origin: center;
+            @for $i from 1 through 16 {
+                &:nth-of-type(#{$i * 1}) {
+                    rotate: 20deg * $i;
+                }
+            }
+            animation: drawline 1s;
+            @keyframes drawline {
+                0% {
+                    width: 20%;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+    &-4 {
+        position: absolute;
+        @include size(620px);
+        animation: rotationL 10s linear infinite;
+
+        p {
+            @include center;
+            width: 86.5%;
+            height: 50%;
+            border-bottom: 5px solid $color;
+            $lines: 3;
+            $angle: calc(360deg / $lines);
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i * 1}) {
+                    rotate: $angle * $i + 30deg;
+                    animation: draw 1s;
+                    @keyframes draw {
+                        0% {
+                            clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+                        }
+                        100% {
+                            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.text {
+    &-1 {
+        position: absolute;
+        animation: text-1in 1s 1.5s backwards, rotationR 13s linear infinite;
+        @keyframes text-1in {
+            0% {
+                rotate: -360deg;
+                scale: 0;
+                opacity: 0;
+            }
+
+            70% {
+                scale: 1.2;
+                opacity: 1;
+            }
+            100% {
+                scale: 1;
+                opacity: 1;
+            }
+        }
+        span {
+            position: absolute;
+            $offset: 640px;
+            $size: 70px;
+            @include size($size);
+            box-sizing: border-box;
+            top: calc(50% - ($size / 2));
+            left: calc(50% - ($size / 2));
+            color: $color;
+            line-height: $size;
+            font-size: 110px;
+            $texts: 'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' 'I' 'J' 'K' 'L' 'N' 'M' 'O' 'P' 'Q' 'R' 'S' 'T' 'U' 'V' 'W' 'X' 'Y' 'Z' 'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' 'I' 'J' 'K' 'L' 'N' 'M' 'O' 'P' 'Q' 'R' 'S'
+                'T' 'U' 'V' 'W' 'X' 'Y' 'Z';
+            $total: length($texts);
+            $angle: calc(360deg / $total);
+
+            @for $i from 1 through length($texts) {
+                &:nth-of-type(#{$i * 1}) {
+                    rotate: calc($angle * $i + 90deg);
+                    translate: calc(cos($angle * $i) * $offset) calc(sin($angle * $i) * $offset);
+                    &::before {
+                        content: '#{nth($texts, $i)}';
+                    }
+                }
+            }
+        }
+    }
+    &-2 {
+        $anglefix: 59deg;
+        position: absolute;
+        rotate: $anglefix;
+        animation: rotationL2 10s linear infinite, circle-1in 1s 2s backwards;
+        @keyframes rotationL2 {
+            0% {
+                rotate: 0deg + $anglefix;
+            }
+            100% {
+                rotate: -360deg + $anglefix;
+            }
+        }
+        span {
+            position: absolute;
+            $offset: 442px;
+            $size: 260px;
+            @include size($size);
+            box-sizing: border-box;
+            top: calc(50% - ($size / 2));
+            left: calc(50% - ($size / 2));
+            color: $color;
+            line-height: $size;
+            font-size: 190px;
+            $texts: '' '' '';
+            $total: length($texts);
+            $angle: calc(360deg / $total);
+            border: 10px solid $color {
+                radius: 50%;
+            }
+            @mixin square($value) {
+                content: '';
+                @include size(70%);
+                @include center;
+                position: absolute;
+                border: 3px solid $color;
+                rotate: $value;
+                box-sizing: border-box;
+                scale: 1.05;
+            }
+
+            @for $i from 1 through length($texts) {
+                &:nth-of-type(#{$i * 1}) {
+                    rotate: calc($angle * $i + 90deg);
+                    translate: calc(cos($angle * $i) * $offset) calc(sin($angle * $i) * $offset);
+
+                    &::before {
+                        @include square(-2.5deg);
+                    }
+                    &::after {
+                        @include square(42.5deg);
+                        // animation: rotationR 13s linear infinite;
+                    }
+                }
+            }
+        }
+    }
+    &-3 {
+        animation: rotationL 10s linear infinite;
+        @include center;
+
+        a {
+            position: absolute;
+            $offset: 360px;
+            $size: 200px;
+            @include size($size);
+            border: 2px solid $color {
+                radius: 50%;
+            }
+            box-sizing: border-box;
+            top: calc(50% - ($size / 2));
+            left: calc(50% - ($size / 2));
+            color: $color;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            line-height: $size;
+            font-size: 50px;
+            $total: 3;
+            $angle: calc(360deg / $total);
+            transition: 0.3s;
+
+            &:hover {
+                background-color: #fff;
+                color: transparent;
+            }
+            &:active {
+            }
+
+            @for $i from 1 through $total {
+                &:nth-of-type(#{$i * 1}) {
+                    translate: calc(cos($angle * $i) * $offset) calc(sin($angle * $i) * $offset);
+
+                    span {
+                        position: absolute;
+                        $offset2: 160px;
+                        $size2: 100px;
+                        @include size($size2);
+                        box-sizing: border-box;
+                        top: calc(50% - ($size2 / 2));
+                        left: calc(50% - ($size2 / 2));
+                        justify-content: center; /* 横方向の中央揃え */
+                        align-items: center; /* 縦方向の中央揃え */
+                        text-align: center; /* 文字*/
+                        line-height: $size2;
+                        font-size: 70px;
+                        $texts2: 'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' 'I' 'J' 'K' 'L' 'N' 'M' 'O' 'P' 'Q' 'R' 'S' 'T' 'U' 'V' 'W' 'X' 'Y' 'Z';
+                        $total2: length($texts2);
+                        $angle2: calc(360deg / $total2);
+
+                        // /* 魔法陣の各文字を回転させる */
+                        @for $i from 1 through length($texts2) {
+                            &:nth-of-type(#{$i * 1}) {
+                                rotate: calc($angle2 * $i + 90deg);
+                                translate: calc(cos($angle2 * $i) * $offset2) calc(sin($angle2 * $i) * $offset2);
+                                &::before {
+                                    content: '#{nth($texts2, $i)}';
+                                }
+                            }
+                        }
+                    }
+
+                    &::before {
+                        content: '';
+                        // position: absolute;
+                        @include size(100%);
+                        border: 2px solid $color {
+                            radius: 50%;
+                        }
+                        box-sizing: border-box;
+                        @include center;
+                        scale: 2.1;
+                    }
+                    &::after {
+                        content: '';
+                        // position: absolute;
+                        @include size(100%);
+                        border: 2px solid $color {
+                            radius: 50%;
+                        }
+                        box-sizing: border-box;
+                        @include center;
+                        scale: 1.2;
+                    }
+                    animation: rotationL 3s linear infinite, scale 0.5s 1.2s backwards;
+                    // animation-fill-mode: backwards;
+                    @keyframes scale {
+                        0% {
+                            scale: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes rotationL {
+    100% {
+        rotate: -360deg;
+    }
+}
+
+@keyframes rotationR {
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@keyframes rotation3d {
+    100% {
+        transform: rotate3d(1, 1, 1, 360deg);
+    }
+}
+
+.hoge {
+    position: fixed;
+    top: 15px;
+    font-size: 30px;
+    z-index: 1;
+    color: #fff;
+    transition: 1s;
+    filter: drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 20px $glowcolor);
+    text-decoration: none;
+    transition: 0.5s;
+    &:hover {
+        scale: 1.2;
+    }
+}
+#magic {
+    display: none;
+}
+
+#magic:target {
+    display: grid;
+}
