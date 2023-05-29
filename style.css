@@ -1,26 +1,12 @@
 @charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: "RuneAMN Series Fonts";
   src: url("./fonts/RuneAssignMN_SansHumanicLike_1.20140809235940.woff") format("woff");
 }
-.base {
-  display: grid;
-}
-
-#toggle1:checked ~ .base {
-  display: none !important;
-}
-
-#toggle2:checked ~ .base {
-  display: none !important;
-}
-
-#toggle1,
-#toggle2 {
-  height: 20px;
-  z-index: 10 !important;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -35,22 +21,23 @@ body {
 }
 
 .base {
-  scale: 0.5;
-  width: 1000px;
-  height: 1000px;
+  scale: 0.4;
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
   filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 20px #913513);
   transform: rotate3d(1, 0, 0, 65deg);
   transition: 1s;
-  animation: flashing 3s linear infinite alternate, s 3s;
+  animation: s 3s;
 }
 .base:hover {
   transform: rotate3d(1, 0, 0, 0deg);
 }
 .base:active {
-  rotate: 360deg;
-  scale: 1;
+  rotate: 540deg;
+  scale: 0.5;
+  filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 20px #913513) drop-shadow(0px 0px 20px #fff);
 }
 @keyframes flashing {
   100% {
@@ -66,7 +53,6 @@ body {
   height: 316px;
   border: 3px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
 }
 .circle-1::before {
   content: "";
@@ -78,7 +64,6 @@ body {
   scale: 3.7;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
 }
 .circle-1::after {
   content: "";
@@ -90,7 +75,6 @@ body {
   scale: 4.6;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
 }
 .circle-2 {
   position: absolute;
@@ -98,7 +82,6 @@ body {
   height: 1490px;
   border: 20px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
   filter: blur(10px);
   animation: circle-1in 1s 2.5s backwards;
 }
@@ -117,7 +100,6 @@ body {
   opacity: 0.1;
   border: 20px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
   filter: blur(10px);
   animation: circle-3in 1s 2.5s backwards;
 }
@@ -140,8 +122,8 @@ body {
   position: absolute;
   margin: auto;
   inset: 0;
-  width: 86.5%;
-  height: 50%;
+  width: 80.5%;
+  height: 58%;
   border-bottom: 50px solid #fff;
 }
 .line-1 p:nth-of-type(1) {
@@ -196,7 +178,7 @@ body {
   position: absolute;
   margin: auto;
   inset: 0;
-  width: 86.5%;
+  width: 85.5%;
   height: 50%;
   border-bottom: 9px solid #fff;
 }
@@ -351,28 +333,12 @@ body {
 
 .text-1 {
   position: absolute;
-  animation: text-1in 1s 1.5s backwards, rotationR 13s linear infinite;
-}
-@keyframes text-1in {
-  0% {
-    rotate: -360deg;
-    scale: 0;
-    opacity: 0;
-  }
-  70% {
-    scale: 1.2;
-    opacity: 1;
-  }
-  100% {
-    scale: 1;
-    opacity: 1;
-  }
+  animation: rotationR 13s linear infinite;
 }
 .text-1 span {
   position: absolute;
   width: 70px;
   height: 70px;
-  box-sizing: border-box;
   top: calc(50% - 35px);
   left: calc(50% - 35px);
   color: #fff;
@@ -382,6 +348,7 @@ body {
 .text-1 span:nth-of-type(1) {
   rotate: 96.9230769231deg;
   translate: calc(cos(6.9230769231deg) * 640px) calc(sin(6.9230769231deg) * 640px);
+  animation: text-1in 1s 2.02s backwards;
 }
 .text-1 span:nth-of-type(1)::before {
   content: "A";
@@ -389,6 +356,7 @@ body {
 .text-1 span:nth-of-type(2) {
   rotate: 103.8461538462deg;
   translate: calc(cos(13.8461538462deg) * 640px) calc(sin(13.8461538462deg) * 640px);
+  animation: text-1in 1s 2.04s backwards;
 }
 .text-1 span:nth-of-type(2)::before {
   content: "B";
@@ -396,6 +364,7 @@ body {
 .text-1 span:nth-of-type(3) {
   rotate: 110.7692307692deg;
   translate: calc(cos(20.7692307692deg) * 640px) calc(sin(20.7692307692deg) * 640px);
+  animation: text-1in 1s 2.06s backwards;
 }
 .text-1 span:nth-of-type(3)::before {
   content: "C";
@@ -403,6 +372,7 @@ body {
 .text-1 span:nth-of-type(4) {
   rotate: 117.6923076923deg;
   translate: calc(cos(27.6923076923deg) * 640px) calc(sin(27.6923076923deg) * 640px);
+  animation: text-1in 1s 2.08s backwards;
 }
 .text-1 span:nth-of-type(4)::before {
   content: "D";
@@ -410,6 +380,7 @@ body {
 .text-1 span:nth-of-type(5) {
   rotate: 124.6153846154deg;
   translate: calc(cos(34.6153846154deg) * 640px) calc(sin(34.6153846154deg) * 640px);
+  animation: text-1in 1s 2.1s backwards;
 }
 .text-1 span:nth-of-type(5)::before {
   content: "E";
@@ -417,6 +388,7 @@ body {
 .text-1 span:nth-of-type(6) {
   rotate: 131.5384615385deg;
   translate: calc(cos(41.5384615385deg) * 640px) calc(sin(41.5384615385deg) * 640px);
+  animation: text-1in 1s 2.12s backwards;
 }
 .text-1 span:nth-of-type(6)::before {
   content: "F";
@@ -424,6 +396,7 @@ body {
 .text-1 span:nth-of-type(7) {
   rotate: 138.4615384615deg;
   translate: calc(cos(48.4615384615deg) * 640px) calc(sin(48.4615384615deg) * 640px);
+  animation: text-1in 1s 2.14s backwards;
 }
 .text-1 span:nth-of-type(7)::before {
   content: "G";
@@ -431,6 +404,7 @@ body {
 .text-1 span:nth-of-type(8) {
   rotate: 145.3846153846deg;
   translate: calc(cos(55.3846153846deg) * 640px) calc(sin(55.3846153846deg) * 640px);
+  animation: text-1in 1s 2.16s backwards;
 }
 .text-1 span:nth-of-type(8)::before {
   content: "H";
@@ -438,6 +412,7 @@ body {
 .text-1 span:nth-of-type(9) {
   rotate: 152.3076923077deg;
   translate: calc(cos(62.3076923077deg) * 640px) calc(sin(62.3076923077deg) * 640px);
+  animation: text-1in 1s 2.18s backwards;
 }
 .text-1 span:nth-of-type(9)::before {
   content: "I";
@@ -445,6 +420,7 @@ body {
 .text-1 span:nth-of-type(10) {
   rotate: 159.2307692308deg;
   translate: calc(cos(69.2307692308deg) * 640px) calc(sin(69.2307692308deg) * 640px);
+  animation: text-1in 1s 2.2s backwards;
 }
 .text-1 span:nth-of-type(10)::before {
   content: "J";
@@ -452,6 +428,7 @@ body {
 .text-1 span:nth-of-type(11) {
   rotate: 166.1538461538deg;
   translate: calc(cos(76.1538461538deg) * 640px) calc(sin(76.1538461538deg) * 640px);
+  animation: text-1in 1s 2.22s backwards;
 }
 .text-1 span:nth-of-type(11)::before {
   content: "K";
@@ -459,6 +436,7 @@ body {
 .text-1 span:nth-of-type(12) {
   rotate: 173.0769230769deg;
   translate: calc(cos(83.0769230769deg) * 640px) calc(sin(83.0769230769deg) * 640px);
+  animation: text-1in 1s 2.24s backwards;
 }
 .text-1 span:nth-of-type(12)::before {
   content: "L";
@@ -466,6 +444,7 @@ body {
 .text-1 span:nth-of-type(13) {
   rotate: 180deg;
   translate: calc(cos(90deg) * 640px) calc(sin(90deg) * 640px);
+  animation: text-1in 1s 2.26s backwards;
 }
 .text-1 span:nth-of-type(13)::before {
   content: "N";
@@ -473,6 +452,7 @@ body {
 .text-1 span:nth-of-type(14) {
   rotate: 186.9230769231deg;
   translate: calc(cos(96.9230769231deg) * 640px) calc(sin(96.9230769231deg) * 640px);
+  animation: text-1in 1s 2.28s backwards;
 }
 .text-1 span:nth-of-type(14)::before {
   content: "M";
@@ -480,6 +460,7 @@ body {
 .text-1 span:nth-of-type(15) {
   rotate: 193.8461538462deg;
   translate: calc(cos(103.8461538462deg) * 640px) calc(sin(103.8461538462deg) * 640px);
+  animation: text-1in 1s 2.3s backwards;
 }
 .text-1 span:nth-of-type(15)::before {
   content: "O";
@@ -487,6 +468,7 @@ body {
 .text-1 span:nth-of-type(16) {
   rotate: 200.7692307692deg;
   translate: calc(cos(110.7692307692deg) * 640px) calc(sin(110.7692307692deg) * 640px);
+  animation: text-1in 1s 2.32s backwards;
 }
 .text-1 span:nth-of-type(16)::before {
   content: "P";
@@ -494,6 +476,7 @@ body {
 .text-1 span:nth-of-type(17) {
   rotate: 207.6923076923deg;
   translate: calc(cos(117.6923076923deg) * 640px) calc(sin(117.6923076923deg) * 640px);
+  animation: text-1in 1s 2.34s backwards;
 }
 .text-1 span:nth-of-type(17)::before {
   content: "Q";
@@ -501,6 +484,7 @@ body {
 .text-1 span:nth-of-type(18) {
   rotate: 214.6153846154deg;
   translate: calc(cos(124.6153846154deg) * 640px) calc(sin(124.6153846154deg) * 640px);
+  animation: text-1in 1s 2.36s backwards;
 }
 .text-1 span:nth-of-type(18)::before {
   content: "R";
@@ -508,6 +492,7 @@ body {
 .text-1 span:nth-of-type(19) {
   rotate: 221.5384615385deg;
   translate: calc(cos(131.5384615385deg) * 640px) calc(sin(131.5384615385deg) * 640px);
+  animation: text-1in 1s 2.38s backwards;
 }
 .text-1 span:nth-of-type(19)::before {
   content: "S";
@@ -515,6 +500,7 @@ body {
 .text-1 span:nth-of-type(20) {
   rotate: 228.4615384615deg;
   translate: calc(cos(138.4615384615deg) * 640px) calc(sin(138.4615384615deg) * 640px);
+  animation: text-1in 1s 2.4s backwards;
 }
 .text-1 span:nth-of-type(20)::before {
   content: "T";
@@ -522,6 +508,7 @@ body {
 .text-1 span:nth-of-type(21) {
   rotate: 235.3846153846deg;
   translate: calc(cos(145.3846153846deg) * 640px) calc(sin(145.3846153846deg) * 640px);
+  animation: text-1in 1s 2.42s backwards;
 }
 .text-1 span:nth-of-type(21)::before {
   content: "U";
@@ -529,6 +516,7 @@ body {
 .text-1 span:nth-of-type(22) {
   rotate: 242.3076923077deg;
   translate: calc(cos(152.3076923077deg) * 640px) calc(sin(152.3076923077deg) * 640px);
+  animation: text-1in 1s 2.44s backwards;
 }
 .text-1 span:nth-of-type(22)::before {
   content: "V";
@@ -536,6 +524,7 @@ body {
 .text-1 span:nth-of-type(23) {
   rotate: 249.2307692308deg;
   translate: calc(cos(159.2307692308deg) * 640px) calc(sin(159.2307692308deg) * 640px);
+  animation: text-1in 1s 2.46s backwards;
 }
 .text-1 span:nth-of-type(23)::before {
   content: "W";
@@ -543,6 +532,7 @@ body {
 .text-1 span:nth-of-type(24) {
   rotate: 256.1538461538deg;
   translate: calc(cos(166.1538461538deg) * 640px) calc(sin(166.1538461538deg) * 640px);
+  animation: text-1in 1s 2.48s backwards;
 }
 .text-1 span:nth-of-type(24)::before {
   content: "X";
@@ -550,6 +540,7 @@ body {
 .text-1 span:nth-of-type(25) {
   rotate: 263.0769230769deg;
   translate: calc(cos(173.0769230769deg) * 640px) calc(sin(173.0769230769deg) * 640px);
+  animation: text-1in 1s 2.5s backwards;
 }
 .text-1 span:nth-of-type(25)::before {
   content: "Y";
@@ -557,6 +548,7 @@ body {
 .text-1 span:nth-of-type(26) {
   rotate: 270deg;
   translate: calc(cos(180deg) * 640px) calc(sin(180deg) * 640px);
+  animation: text-1in 1s 2.52s backwards;
 }
 .text-1 span:nth-of-type(26)::before {
   content: "Z";
@@ -564,6 +556,7 @@ body {
 .text-1 span:nth-of-type(27) {
   rotate: 276.9230769231deg;
   translate: calc(cos(186.9230769231deg) * 640px) calc(sin(186.9230769231deg) * 640px);
+  animation: text-1in 1s 2.54s backwards;
 }
 .text-1 span:nth-of-type(27)::before {
   content: "A";
@@ -571,6 +564,7 @@ body {
 .text-1 span:nth-of-type(28) {
   rotate: 283.8461538462deg;
   translate: calc(cos(193.8461538462deg) * 640px) calc(sin(193.8461538462deg) * 640px);
+  animation: text-1in 1s 2.56s backwards;
 }
 .text-1 span:nth-of-type(28)::before {
   content: "B";
@@ -578,6 +572,7 @@ body {
 .text-1 span:nth-of-type(29) {
   rotate: 290.7692307692deg;
   translate: calc(cos(200.7692307692deg) * 640px) calc(sin(200.7692307692deg) * 640px);
+  animation: text-1in 1s 2.58s backwards;
 }
 .text-1 span:nth-of-type(29)::before {
   content: "C";
@@ -585,6 +580,7 @@ body {
 .text-1 span:nth-of-type(30) {
   rotate: 297.6923076923deg;
   translate: calc(cos(207.6923076923deg) * 640px) calc(sin(207.6923076923deg) * 640px);
+  animation: text-1in 1s 2.6s backwards;
 }
 .text-1 span:nth-of-type(30)::before {
   content: "D";
@@ -592,6 +588,7 @@ body {
 .text-1 span:nth-of-type(31) {
   rotate: 304.6153846154deg;
   translate: calc(cos(214.6153846154deg) * 640px) calc(sin(214.6153846154deg) * 640px);
+  animation: text-1in 1s 2.62s backwards;
 }
 .text-1 span:nth-of-type(31)::before {
   content: "E";
@@ -599,6 +596,7 @@ body {
 .text-1 span:nth-of-type(32) {
   rotate: 311.5384615385deg;
   translate: calc(cos(221.5384615385deg) * 640px) calc(sin(221.5384615385deg) * 640px);
+  animation: text-1in 1s 2.64s backwards;
 }
 .text-1 span:nth-of-type(32)::before {
   content: "F";
@@ -606,6 +604,7 @@ body {
 .text-1 span:nth-of-type(33) {
   rotate: 318.4615384615deg;
   translate: calc(cos(228.4615384615deg) * 640px) calc(sin(228.4615384615deg) * 640px);
+  animation: text-1in 1s 2.66s backwards;
 }
 .text-1 span:nth-of-type(33)::before {
   content: "G";
@@ -613,6 +612,7 @@ body {
 .text-1 span:nth-of-type(34) {
   rotate: 325.3846153846deg;
   translate: calc(cos(235.3846153846deg) * 640px) calc(sin(235.3846153846deg) * 640px);
+  animation: text-1in 1s 2.68s backwards;
 }
 .text-1 span:nth-of-type(34)::before {
   content: "H";
@@ -620,6 +620,7 @@ body {
 .text-1 span:nth-of-type(35) {
   rotate: 332.3076923077deg;
   translate: calc(cos(242.3076923077deg) * 640px) calc(sin(242.3076923077deg) * 640px);
+  animation: text-1in 1s 2.7s backwards;
 }
 .text-1 span:nth-of-type(35)::before {
   content: "I";
@@ -627,6 +628,7 @@ body {
 .text-1 span:nth-of-type(36) {
   rotate: 339.2307692308deg;
   translate: calc(cos(249.2307692308deg) * 640px) calc(sin(249.2307692308deg) * 640px);
+  animation: text-1in 1s 2.72s backwards;
 }
 .text-1 span:nth-of-type(36)::before {
   content: "J";
@@ -634,6 +636,7 @@ body {
 .text-1 span:nth-of-type(37) {
   rotate: 346.1538461538deg;
   translate: calc(cos(256.1538461538deg) * 640px) calc(sin(256.1538461538deg) * 640px);
+  animation: text-1in 1s 2.74s backwards;
 }
 .text-1 span:nth-of-type(37)::before {
   content: "K";
@@ -641,6 +644,7 @@ body {
 .text-1 span:nth-of-type(38) {
   rotate: 353.0769230769deg;
   translate: calc(cos(263.0769230769deg) * 640px) calc(sin(263.0769230769deg) * 640px);
+  animation: text-1in 1s 2.76s backwards;
 }
 .text-1 span:nth-of-type(38)::before {
   content: "L";
@@ -648,6 +652,7 @@ body {
 .text-1 span:nth-of-type(39) {
   rotate: 360deg;
   translate: calc(cos(270deg) * 640px) calc(sin(270deg) * 640px);
+  animation: text-1in 1s 2.78s backwards;
 }
 .text-1 span:nth-of-type(39)::before {
   content: "N";
@@ -655,6 +660,7 @@ body {
 .text-1 span:nth-of-type(40) {
   rotate: 366.9230769231deg;
   translate: calc(cos(276.9230769231deg) * 640px) calc(sin(276.9230769231deg) * 640px);
+  animation: text-1in 1s 2.8s backwards;
 }
 .text-1 span:nth-of-type(40)::before {
   content: "M";
@@ -662,6 +668,7 @@ body {
 .text-1 span:nth-of-type(41) {
   rotate: 373.8461538462deg;
   translate: calc(cos(283.8461538462deg) * 640px) calc(sin(283.8461538462deg) * 640px);
+  animation: text-1in 1s 2.82s backwards;
 }
 .text-1 span:nth-of-type(41)::before {
   content: "O";
@@ -669,6 +676,7 @@ body {
 .text-1 span:nth-of-type(42) {
   rotate: 380.7692307692deg;
   translate: calc(cos(290.7692307692deg) * 640px) calc(sin(290.7692307692deg) * 640px);
+  animation: text-1in 1s 2.84s backwards;
 }
 .text-1 span:nth-of-type(42)::before {
   content: "P";
@@ -676,6 +684,7 @@ body {
 .text-1 span:nth-of-type(43) {
   rotate: 387.6923076923deg;
   translate: calc(cos(297.6923076923deg) * 640px) calc(sin(297.6923076923deg) * 640px);
+  animation: text-1in 1s 2.86s backwards;
 }
 .text-1 span:nth-of-type(43)::before {
   content: "Q";
@@ -683,6 +692,7 @@ body {
 .text-1 span:nth-of-type(44) {
   rotate: 394.6153846154deg;
   translate: calc(cos(304.6153846154deg) * 640px) calc(sin(304.6153846154deg) * 640px);
+  animation: text-1in 1s 2.88s backwards;
 }
 .text-1 span:nth-of-type(44)::before {
   content: "R";
@@ -690,6 +700,7 @@ body {
 .text-1 span:nth-of-type(45) {
   rotate: 401.5384615385deg;
   translate: calc(cos(311.5384615385deg) * 640px) calc(sin(311.5384615385deg) * 640px);
+  animation: text-1in 1s 2.9s backwards;
 }
 .text-1 span:nth-of-type(45)::before {
   content: "S";
@@ -697,6 +708,7 @@ body {
 .text-1 span:nth-of-type(46) {
   rotate: 408.4615384615deg;
   translate: calc(cos(318.4615384615deg) * 640px) calc(sin(318.4615384615deg) * 640px);
+  animation: text-1in 1s 2.92s backwards;
 }
 .text-1 span:nth-of-type(46)::before {
   content: "T";
@@ -704,6 +716,7 @@ body {
 .text-1 span:nth-of-type(47) {
   rotate: 415.3846153846deg;
   translate: calc(cos(325.3846153846deg) * 640px) calc(sin(325.3846153846deg) * 640px);
+  animation: text-1in 1s 2.94s backwards;
 }
 .text-1 span:nth-of-type(47)::before {
   content: "U";
@@ -711,6 +724,7 @@ body {
 .text-1 span:nth-of-type(48) {
   rotate: 422.3076923077deg;
   translate: calc(cos(332.3076923077deg) * 640px) calc(sin(332.3076923077deg) * 640px);
+  animation: text-1in 1s 2.96s backwards;
 }
 .text-1 span:nth-of-type(48)::before {
   content: "V";
@@ -718,6 +732,7 @@ body {
 .text-1 span:nth-of-type(49) {
   rotate: 429.2307692308deg;
   translate: calc(cos(339.2307692308deg) * 640px) calc(sin(339.2307692308deg) * 640px);
+  animation: text-1in 1s 2.98s backwards;
 }
 .text-1 span:nth-of-type(49)::before {
   content: "W";
@@ -725,6 +740,7 @@ body {
 .text-1 span:nth-of-type(50) {
   rotate: 436.1538461538deg;
   translate: calc(cos(346.1538461538deg) * 640px) calc(sin(346.1538461538deg) * 640px);
+  animation: text-1in 1s 3s backwards;
 }
 .text-1 span:nth-of-type(50)::before {
   content: "X";
@@ -732,6 +748,7 @@ body {
 .text-1 span:nth-of-type(51) {
   rotate: 443.0769230769deg;
   translate: calc(cos(353.0769230769deg) * 640px) calc(sin(353.0769230769deg) * 640px);
+  animation: text-1in 1s 3.02s backwards;
 }
 .text-1 span:nth-of-type(51)::before {
   content: "Y";
@@ -739,9 +756,23 @@ body {
 .text-1 span:nth-of-type(52) {
   rotate: 450deg;
   translate: calc(cos(360deg) * 640px) calc(sin(360deg) * 640px);
+  animation: text-1in 1s 3.04s backwards;
 }
 .text-1 span:nth-of-type(52)::before {
   content: "Z";
+}
+@keyframes text-1in {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+    filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+  }
 }
 .text-2 {
   position: absolute;
@@ -760,7 +791,6 @@ body {
   position: absolute;
   width: 260px;
   height: 260px;
-  box-sizing: border-box;
   top: calc(50% - 130px);
   left: calc(50% - 130px);
   color: #fff;
@@ -783,7 +813,6 @@ body {
   position: absolute;
   border: 3px solid #fff;
   rotate: -2.5deg;
-  box-sizing: border-box;
   scale: 1.05;
 }
 .text-2 span:nth-of-type(1)::after {
@@ -796,7 +825,6 @@ body {
   position: absolute;
   border: 3px solid #fff;
   rotate: 42.5deg;
-  box-sizing: border-box;
   scale: 1.05;
 }
 .text-2 span:nth-of-type(2) {
@@ -813,7 +841,6 @@ body {
   position: absolute;
   border: 3px solid #fff;
   rotate: -2.5deg;
-  box-sizing: border-box;
   scale: 1.05;
 }
 .text-2 span:nth-of-type(2)::after {
@@ -826,7 +853,6 @@ body {
   position: absolute;
   border: 3px solid #fff;
   rotate: 42.5deg;
-  box-sizing: border-box;
   scale: 1.05;
 }
 .text-2 span:nth-of-type(3) {
@@ -843,7 +869,6 @@ body {
   position: absolute;
   border: 3px solid #fff;
   rotate: -2.5deg;
-  box-sizing: border-box;
   scale: 1.05;
 }
 .text-2 span:nth-of-type(3)::after {
@@ -856,7 +881,6 @@ body {
   position: absolute;
   border: 3px solid #fff;
   rotate: 42.5deg;
-  box-sizing: border-box;
   scale: 1.05;
 }
 .text-3 {
@@ -871,13 +895,9 @@ body {
   height: 200px;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
   top: calc(50% - 100px);
   left: calc(50% - 100px);
   color: #fff;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   line-height: 200px;
   font-size: 50px;
   transition: 0.3s;
@@ -894,7 +914,6 @@ body {
   position: absolute;
   width: 100px;
   height: 100px;
-  box-sizing: border-box;
   top: calc(50% - 50px);
   left: calc(50% - 50px);
   justify-content: center; /* 横方向の中央揃え */
@@ -1091,7 +1110,6 @@ body {
   height: 100%;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
   position: absolute;
   margin: auto;
   inset: 0;
@@ -1103,7 +1121,6 @@ body {
   height: 100%;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
   position: absolute;
   margin: auto;
   inset: 0;
@@ -1122,7 +1139,6 @@ body {
   position: absolute;
   width: 100px;
   height: 100px;
-  box-sizing: border-box;
   top: calc(50% - 50px);
   left: calc(50% - 50px);
   justify-content: center; /* 横方向の中央揃え */
@@ -1319,7 +1335,6 @@ body {
   height: 100%;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
   position: absolute;
   margin: auto;
   inset: 0;
@@ -1331,7 +1346,6 @@ body {
   height: 100%;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
   position: absolute;
   margin: auto;
   inset: 0;
@@ -1350,7 +1364,6 @@ body {
   position: absolute;
   width: 100px;
   height: 100px;
-  box-sizing: border-box;
   top: calc(50% - 50px);
   left: calc(50% - 50px);
   justify-content: center; /* 横方向の中央揃え */
@@ -1547,7 +1560,6 @@ body {
   height: 100%;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
   position: absolute;
   margin: auto;
   inset: 0;
@@ -1559,7 +1571,6 @@ body {
   height: 100%;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-sizing: border-box;
   position: absolute;
   margin: auto;
   inset: 0;
@@ -1581,16 +1592,11 @@ body {
     rotate: 360deg;
   }
 }
-@keyframes rotation3d {
-  100% {
-    transform: rotate3d(1, 1, 1, 360deg);
-  }
-}
 .hoge {
+  z-index: 1;
   position: fixed;
   top: 15px;
   font-size: 30px;
-  z-index: 1;
   color: #fff;
   transition: 1s;
   filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 20px #913513);

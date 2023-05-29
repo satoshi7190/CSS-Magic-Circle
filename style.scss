@@ -1,23 +1,12 @@
+* {
+    box-sizing: border-box;
+    // animation: none !important;
+}
+
 @font-face {
     // https://github.com/MichinariNukazawa/RuneAssignMN_Series_Fonts
     font-family: 'RuneAMN Series Fonts';
     src: url('./fonts/RuneAssignMN_SansHumanicLike_1.20140809235940.woff') format('woff');
-}
-.base {
-    display: grid;
-}
-
-#toggle1:checked ~ .base {
-    display: none !important;
-}
-
-#toggle2:checked ~ .base {
-    display: none !important;
-}
-#toggle1,
-#toggle2 {
-    height: 20px;
-    z-index: 10 !important;
 }
 
 $color: #fff;
@@ -49,8 +38,8 @@ body {
 }
 
 .base {
-    scale: 0.5;
-    @include size(1000px);
+    scale: 0.4;
+    @include size(100%);
     display: grid;
     place-items: center;
     filter: drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 20px $glowcolor);
@@ -60,10 +49,11 @@ body {
         transform: rotate3d(1, 0, 0, 0deg);
     }
     &:active {
-        rotate: 360deg;
-        scale: 1;
+        rotate: 540deg;
+        scale: 0.5;
+        filter: drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 20px $glowcolor) drop-shadow(0px 0px 20px $color);
     }
-    animation: flashing 3s linear infinite alternate, s 3s;
+    animation: s 3s;
     @keyframes flashing {
         100% {
             filter: drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 20px $glowcolor) drop-shadow(0px 0px 20px $color);
@@ -84,7 +74,6 @@ body {
         border: 3px solid $color {
             radius: 50%;
         }
-        box-sizing: border-box;
         &::before {
             content: '';
             @include center;
@@ -93,7 +82,6 @@ body {
             border: 2px solid $color {
                 radius: 50%;
             }
-            box-sizing: border-box;
         }
         &::after {
             content: '';
@@ -103,7 +91,6 @@ body {
             border: 2px solid $color {
                 radius: 50%;
             }
-            box-sizing: border-box;
         }
     }
 
@@ -113,7 +100,6 @@ body {
         border: 20px solid $color {
             radius: 50%;
         }
-        box-sizing: border-box;
         filter: blur(10px);
         animation: circle-1in 1s 2.5s backwards;
         @keyframes circle-1in {
@@ -134,7 +120,6 @@ body {
         border: 20px solid $color {
             radius: 50%;
         }
-        box-sizing: border-box;
         filter: blur(10px);
         animation: circle-3in 1s 2.5s backwards;
         @keyframes circle-3in {
@@ -157,8 +142,8 @@ body {
 
         p {
             @include center;
-            width: 86.5%;
-            height: 50%;
+            width: 80.5%;
+            height: 58%;
             border-bottom: 50px solid $color;
             $lines: 3;
             $angle: calc(360deg / $lines);
@@ -185,7 +170,7 @@ body {
 
         p {
             @include center;
-            width: 86.5%;
+            width: 85.5%;
             height: 50%;
             border-bottom: 9px solid $color;
             $lines: 3;
@@ -263,29 +248,14 @@ body {
 .text {
     &-1 {
         position: absolute;
-        animation: text-1in 1s 1.5s backwards, rotationR 13s linear infinite;
-        @keyframes text-1in {
-            0% {
-                rotate: -360deg;
-                scale: 0;
-                opacity: 0;
-            }
+        animation: rotationR 13s linear infinite;
 
-            70% {
-                scale: 1.2;
-                opacity: 1;
-            }
-            100% {
-                scale: 1;
-                opacity: 1;
-            }
-        }
         span {
             position: absolute;
             $offset: 640px;
             $size: 70px;
             @include size($size);
-            box-sizing: border-box;
+
             top: calc(50% - ($size / 2));
             left: calc(50% - ($size / 2));
             color: $color;
@@ -303,6 +273,22 @@ body {
                     &::before {
                         content: '#{nth($texts, $i)}';
                     }
+                    animation: text-1in 1s calc($i * 0.02s + 2s) backwards;
+                }
+            }
+
+            @keyframes text-1in {
+                0% {
+                    opacity: 0;
+                }
+
+                30% {
+                    opacity: 1;
+                    filter: drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 10px $glowcolor);
+                }
+                100% {
+                    opacity: 1;
+                    filter: none;
                 }
             }
         }
@@ -325,7 +311,6 @@ body {
             $offset: 442px;
             $size: 260px;
             @include size($size);
-            box-sizing: border-box;
             top: calc(50% - ($size / 2));
             left: calc(50% - ($size / 2));
             color: $color;
@@ -344,7 +329,7 @@ body {
                 position: absolute;
                 border: 3px solid $color;
                 rotate: $value;
-                box-sizing: border-box;
+
                 scale: 1.05;
             }
 
@@ -376,13 +361,9 @@ body {
             border: 2px solid $color {
                 radius: 50%;
             }
-            box-sizing: border-box;
             top: calc(50% - ($size / 2));
             left: calc(50% - ($size / 2));
             color: $color;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
             line-height: $size;
             font-size: 50px;
             $total: 3;
@@ -405,7 +386,6 @@ body {
                         $offset2: 160px;
                         $size2: 100px;
                         @include size($size2);
-                        box-sizing: border-box;
                         top: calc(50% - ($size2 / 2));
                         left: calc(50% - ($size2 / 2));
                         justify-content: center; /* 横方向の中央揃え */
@@ -417,8 +397,7 @@ body {
                         $total2: length($texts2);
                         $angle2: calc(360deg / $total2);
 
-                        // /* 魔法陣の各文字を回転させる */
-                        @for $i from 1 through length($texts2) {
+                        @for $i from 1 through $total2 {
                             &:nth-of-type(#{$i * 1}) {
                                 rotate: calc($angle2 * $i + 90deg);
                                 translate: calc(cos($angle2 * $i) * $offset2) calc(sin($angle2 * $i) * $offset2);
@@ -436,7 +415,6 @@ body {
                         border: 2px solid $color {
                             radius: 50%;
                         }
-                        box-sizing: border-box;
                         @include center;
                         scale: 2.1;
                     }
@@ -447,12 +425,10 @@ body {
                         border: 2px solid $color {
                             radius: 50%;
                         }
-                        box-sizing: border-box;
                         @include center;
                         scale: 1.2;
                     }
                     animation: rotationL 3s linear infinite, scale 0.5s 1.2s backwards;
-                    // animation-fill-mode: backwards;
                     @keyframes scale {
                         0% {
                             scale: 0;
@@ -476,17 +452,11 @@ body {
     }
 }
 
-@keyframes rotation3d {
-    100% {
-        transform: rotate3d(1, 1, 1, 360deg);
-    }
-}
-
 .hoge {
+    z-index: 1;
     position: fixed;
     top: 15px;
     font-size: 30px;
-    z-index: 1;
     color: #fff;
     transition: 1s;
     filter: drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 10px $glowcolor) drop-shadow(0px 0px 20px $glowcolor);
