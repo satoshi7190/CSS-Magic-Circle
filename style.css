@@ -20,7 +20,7 @@ body {
   place-items: center;
 }
 
-.base {
+.main {
   scale: 0.4;
   width: 100%;
   height: 100%;
@@ -29,12 +29,11 @@ body {
   filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 20px #913513);
   transform: rotate3d(1, 0, 0, 65deg);
   transition: 1s;
-  animation: s 3s;
 }
-.base:hover {
+.main:hover {
   transform: rotate3d(1, 0, 0, 0deg);
 }
-.base:active {
+.main:active {
   rotate: 540deg;
   scale: 0.5;
   filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 20px #913513) drop-shadow(0px 0px 20px #fff);
@@ -44,7 +43,6 @@ body {
     filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 20px #913513) drop-shadow(0px 0px 20px #fff);
   }
 }
-@keyframes s {}
 
 .circle-1 {
   animation: text-1in 1s 1.2s backwards;
@@ -1592,7 +1590,7 @@ body {
     rotate: 360deg;
   }
 }
-.hoge {
+.button {
   z-index: 1;
   position: fixed;
   top: 15px;
@@ -1603,8 +1601,12 @@ body {
   text-decoration: none;
   transition: 0.5s;
 }
-.hoge:hover {
-  scale: 1.2;
+.button:hover {
+  scale: 1.1;
+  filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 20px #913513) drop-shadow(0px 0px 10px #fff);
+}
+.button::before {
+  content: "ここをクリックして魔法を発動！";
 }
 
 #magic {
