@@ -1,5 +1,7 @@
 @charset "UTF-8";
-* {
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
@@ -81,7 +83,7 @@ body {
   border: 20px solid #fff;
   border-radius: 50%;
   filter: blur(10px);
-  animation: circle-1in 1s 2.5s backwards;
+  animation: circle-1in 1s 3s backwards;
 }
 @keyframes circle-1in {
   0% {
@@ -99,7 +101,7 @@ body {
   border: 20px solid #fff;
   border-radius: 50%;
   filter: blur(10px);
-  animation: circle-3in 1s 2.5s backwards;
+  animation: circle-3in 1s 3s backwards;
 }
 @keyframes circle-3in {
   0% {
@@ -812,6 +814,12 @@ body {
   border: 3px solid #fff;
   rotate: -2.5deg;
   scale: 1.05;
+  animation: rotation3dR 5s linear infinite;
+}
+@keyframes rotation3dR {
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
 }
 .text-2 span:nth-of-type(1)::after {
   content: "";
@@ -824,6 +832,12 @@ body {
   border: 3px solid #fff;
   rotate: 42.5deg;
   scale: 1.05;
+  animation: rotation3dL 5s linear infinite 1.25s backwards;
+}
+@keyframes rotation3dL {
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
 }
 .text-2 span:nth-of-type(2) {
   rotate: 330deg;
@@ -840,6 +854,12 @@ body {
   border: 3px solid #fff;
   rotate: -2.5deg;
   scale: 1.05;
+  animation: rotation3dR 5s linear infinite;
+}
+@keyframes rotation3dR {
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
 }
 .text-2 span:nth-of-type(2)::after {
   content: "";
@@ -852,6 +872,12 @@ body {
   border: 3px solid #fff;
   rotate: 42.5deg;
   scale: 1.05;
+  animation: rotation3dL 5s linear infinite 1.25s backwards;
+}
+@keyframes rotation3dL {
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
 }
 .text-2 span:nth-of-type(3) {
   rotate: 450deg;
@@ -868,6 +894,12 @@ body {
   border: 3px solid #fff;
   rotate: -2.5deg;
   scale: 1.05;
+  animation: rotation3dR 5s linear infinite;
+}
+@keyframes rotation3dR {
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
 }
 .text-2 span:nth-of-type(3)::after {
   content: "";
@@ -880,6 +912,12 @@ body {
   border: 3px solid #fff;
   rotate: 42.5deg;
   scale: 1.05;
+  animation: rotation3dL 5s linear infinite 1.25s backwards;
+}
+@keyframes rotation3dL {
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
 }
 .text-3 {
   animation: rotationL 10s linear infinite;
@@ -914,9 +952,6 @@ body {
   height: 100px;
   top: calc(50% - 50px);
   left: calc(50% - 50px);
-  justify-content: center; /* 横方向の中央揃え */
-  align-items: center; /* 縦方向の中央揃え */
-  text-align: center; /* 文字*/
   line-height: 100px;
   font-size: 70px;
 }
@@ -1139,9 +1174,6 @@ body {
   height: 100px;
   top: calc(50% - 50px);
   left: calc(50% - 50px);
-  justify-content: center; /* 横方向の中央揃え */
-  align-items: center; /* 縦方向の中央揃え */
-  text-align: center; /* 文字*/
   line-height: 100px;
   font-size: 70px;
 }
@@ -1364,9 +1396,6 @@ body {
   height: 100px;
   top: calc(50% - 50px);
   left: calc(50% - 50px);
-  justify-content: center; /* 横方向の中央揃え */
-  align-items: center; /* 縦方向の中央揃え */
-  text-align: center; /* 文字*/
   line-height: 100px;
   font-size: 70px;
 }

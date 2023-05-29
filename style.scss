@@ -1,4 +1,6 @@
-* {
+*,
+::before,
+::after {
     box-sizing: border-box;
     // animation: none !important;
 }
@@ -95,7 +97,7 @@ body {
             radius: 50%;
         }
         filter: blur(10px);
-        animation: circle-1in 1s 2.5s backwards;
+        animation: circle-1in 1s 3s backwards;
         @keyframes circle-1in {
             0% {
                 opacity: 0;
@@ -115,7 +117,7 @@ body {
             radius: 50%;
         }
         filter: blur(10px);
-        animation: circle-3in 1s 2.5s backwards;
+        animation: circle-3in 1s 3s backwards;
         @keyframes circle-3in {
             0% {
                 opacity: 0;
@@ -249,7 +251,6 @@ body {
             $offset: 640px;
             $size: 70px;
             @include size($size);
-
             top: calc(50% - ($size / 2));
             left: calc(50% - ($size / 2));
             color: $color;
@@ -323,7 +324,6 @@ body {
                 position: absolute;
                 border: 3px solid $color;
                 rotate: $value;
-
                 scale: 1.05;
             }
 
@@ -334,9 +334,21 @@ body {
 
                     &::before {
                         @include square(-2.5deg);
+                        animation: rotation3dR 5s linear infinite;
+                        @keyframes rotation3dR {
+                            100% {
+                                transform: rotate3d(1, 1, 0, 360deg);
+                            }
+                        }
                     }
                     &::after {
                         @include square(42.5deg);
+                        animation: rotation3dL 5s linear infinite 1.25s backwards;
+                        @keyframes rotation3dL {
+                            100% {
+                                transform: rotate3d(1, 1, 0, 360deg);
+                            }
+                        }
                     }
                 }
             }
@@ -371,7 +383,6 @@ body {
             @for $i from 1 through $total {
                 &:nth-of-type(#{$i * 1}) {
                     translate: calc(cos($angle * $i) * $offset) calc(sin($angle * $i) * $offset);
-
                     span {
                         position: absolute;
                         $offset2: 160px;
@@ -379,9 +390,6 @@ body {
                         @include size($size2);
                         top: calc(50% - ($size2 / 2));
                         left: calc(50% - ($size2 / 2));
-                        justify-content: center; /* 横方向の中央揃え */
-                        align-items: center; /* 縦方向の中央揃え */
-                        text-align: center; /* 文字*/
                         line-height: $size2;
                         font-size: 70px;
                         $texts2: 'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' 'I' 'J' 'K' 'L' 'N' 'M' 'O' 'P' 'Q' 'R' 'S' 'T' 'U' 'V' 'W' 'X' 'Y' 'Z';
