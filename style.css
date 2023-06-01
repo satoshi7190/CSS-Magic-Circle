@@ -1,4 +1,3 @@
-@charset "UTF-8";
 *,
 ::before,
 ::after {
@@ -1622,20 +1621,21 @@ body {
 .button {
   z-index: 1;
   position: fixed;
-  top: 15px;
+  top: 20px;
   font-size: 30px;
   color: #fff;
   transition: 1s;
   filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 20px #913513);
   text-decoration: none;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 .button:hover {
-  scale: 1.1;
-  filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 20px #913513) drop-shadow(0px 0px 10px #fff);
+  scale: 1.04;
+  filter: drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 10px #913513) drop-shadow(0px 0px 3px #d8d8d8);
 }
 .button::before {
-  content: "ここをクリックして魔法を発動！";
+  content: "Click here to activate the magic!";
+  font-family: sans-serif;
 }
 
 #magic {
